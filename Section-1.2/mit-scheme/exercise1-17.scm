@@ -16,39 +16,3 @@
 ;; (even) integer by 2. Using these, design a multiplication procedure analogous to "fast-expt"
 ;; that uses a logarithmic number of steps.
 ;;
-
-(define (double x) (+ x x))
-(define (halve x) (/ x 2))
-(define (even? n) (= (remainder n 2) 0))
-
-(define (* a b)
-  (cond ((= b 0) 0)
-	((even? b) (double (* a (halve b))))
-	(else
-	 (+ a (* a (- b 1))))))
-
-;;
-;; Unit test:
-;;
-(* 3 5)
-;; ==> 15
-
-;;
-;; Expanding the call graph (for edification):
-;;
-(* 3 5)
-(+ 3 (* 3 (- 5 1)))
-(+ 3 (* 3 4))
-(+ 3 (double (* 3 (halve 4))))
-(+ 3 (double (* 3 2)))
-(+ 3 (double (double (* 3 (halve 2)))))
-(+ 3 (double (double (* 3 1))))
-(+ 3 (double (double (+ 3 (* 3 (- 1 1))))))
-(+ 3 (double (double (+ 3 (* 3 0)))))
-(+ 3 (double (double (+ 3 0))))
-(+ 3 (double (double 3)))
-(+ 3 (double (+ 3 3)))
-(+ 3 (double 6))
-(+ 3 (+ 6 6))
-(+ 3 12)
-15
