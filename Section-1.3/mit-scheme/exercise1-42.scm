@@ -7,17 +7,4 @@
 ;;
 ;; ((compose square inc) 6)
 ;; --> 49
-
-;; 
-;; Definition of the "compose" procedure:
 ;;
-(define (compose f g)
-  (lambda (x) (f (g x))))
-
-;;
-;; Run the sample given in text:
-;;
-(define (inc n) (+ n 1))
-
-((compose square inc) 6)
-;; --> 49

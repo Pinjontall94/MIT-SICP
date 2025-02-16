@@ -14,25 +14,3 @@
 ;; 
 ;; Hint: you may find it convenient to use "compose" from exercise 1.42.
 ;;
-
-;;
-;; Give the "compose" procedure from exercise 1.42:
-;;
-(define (compose f g)
-  (lambda (x) (f (g x))))
-
-;;
-;; Definition of the "repeated" procedure:
-;;
-(define (repeated f n)
-  (define (repeated-iter g c)
-    (cond ((>= c n) g)
-	  (else
-	   (repeated-iter (compose g f) (+ c 1)))))
-  (repeated-iter f 1))
-
-;;
-;; Use cases:
-;;
-((repeated square 2) 5)
-;; ==> 625
