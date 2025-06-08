@@ -8,14 +8,3 @@
 ;;
 ;; Define selectors "upper-bound" and "lower-bound" to complete the implementation.
 ;; 
-
-;;
-;; Constructor:
-;;
-(define (make-interval a b) (cons a b))
-
-;;
-;; Selectors:
-;;
-(define (lower-bound x) (car x))
-(define (upper-bound x) (cdr x))
