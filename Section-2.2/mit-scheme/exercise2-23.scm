@@ -14,25 +14,3 @@
 ;; 321
 ;; 88
 ;;
-
-;;
-;; Define the procedure:
-;;
-(define (for-each func items)
-  (define (for-each-iter work answer)
-    (if (null? work)
-	'()
-	(for-each-iter (cdr work)
-		       (append answer
-			       (list (func (car work)))))))
-  (for-each-iter items '()))
-
-;;
-;; Try out the new procedure:
-;;
-(for-each (lambda (x) (newline) (display x))
-	  (list 57 321 88))
-;; ==> 57 
-;; ==> 321
-;; ==> 88
-;; ==> '()

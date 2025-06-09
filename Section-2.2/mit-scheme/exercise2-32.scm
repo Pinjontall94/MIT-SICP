@@ -42,22 +42,3 @@
 ;;
 ;; (lambda (x) (cons (car s) x))
 ;;
-(define (subsets s)
-  (if (null? s)
-      (list '())
-      (let ((rest (subsets (cdr s))))
-	(append rest (map (lambda (x) (cons (car s) x)) rest)))))
-
-;;
-;; Run some use cases:
-;;
-(subsets (list))
-;; ==> (())
-(subsets (list 1))
-;; ==> (() (1))
-(subsets (list 1 2))
-;; ==> (() (2) (1) (1 2))
-(subsets (list 1 2 3))
-;; ==> (() (3) (2) (2 3) (1) (1 3) (1 2) (1 2 3))
-(subsets (list 'a 'b))
-;; ==> (() (b) (a) (a b))
