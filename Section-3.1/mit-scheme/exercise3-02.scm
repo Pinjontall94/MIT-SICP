@@ -21,29 +21,3 @@
 ;; (s 'how-many-calls?)
 ;; 1
 ;;
-
-;;
-;; Define the procedure:
-;;
-(define (make-monitored f)
-  (let ((count 0))
-    (define (mf m)
-      (cond ((eq? m 'how-many-calls?) count)
-	    ((eq? m 'reset-count) (set! count 0) 0)
-	    (else
-	     (set! count (+ count 1))
-	     (f m))))
-    mf))
-
-;;
-;; Run the unit tests
-;;
-(define s (make-monitored sqrt))
-
-(s 100)
-;; ==> 10 
-(s 49)
-;; ==> 7
-
-(s 'how-many-calls?)
-;; ==> 2
